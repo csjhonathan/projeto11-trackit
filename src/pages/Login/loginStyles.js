@@ -41,14 +41,14 @@ const InputLoginForm = styled.input`
   border: 1px solid #D5D5D5;
   border-radius: 5px;
   padding-left: 11px;
+  font-size: 20px;
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+
   &::placeholder{
     color: ${colors.placeholder};
-    height: 25px;
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 25px;
   }
 `
 const LoginButton = styled.button`

@@ -24,6 +24,8 @@ const RegisterContainer = styled.div`
 const Logo = styled.img`
   width: 180px;
   height: 178px;
+  opacity: 1;
+  transition: all .5s;
 `
 const RegisterForm = styled.form`
   display: flex;
@@ -40,13 +42,14 @@ const InputRegisterForm = styled.input`
   border: 1px solid #D5D5D5;
   border-radius: 5px;
   padding-left: 11px;
+  font-size: 20px;
+  font-family: 'Lexend Deca';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+
   &::placeholder{
     color: ${colors.placeholder};
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    
   }
 `
 const RegisterButton = styled.button`
