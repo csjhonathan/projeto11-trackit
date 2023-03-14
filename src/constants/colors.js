@@ -10,7 +10,11 @@ const colors = {
   habitText : "#666666", 
   completed : "#8FC549",
   neutral : "#FFFFFF",
-  placeholder : "#DBDBDB;"
+  placeholder : "#DBDBDB;",
+  currentDay : "#126BA5",
+  message : "#BABABA",
+  habitCompleted : "#8FC549",
+  habitNotCompleted : "#EBEBEB"
 };
 
 export default colors;

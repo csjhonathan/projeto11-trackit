@@ -1,7 +1,6 @@
 // dependencies & hooks
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState } from "react";
-
 // pages & components
 import LoginPage from "./pages/Login/LoginPage";
 import Register from "./pages/Register/RegisterPage ";
@@ -15,7 +14,8 @@ import Global from "./GlobalStyles/GlobalStyles";
 import ResetStyle from "./GlobalStyles/Reset ";
 
 function App() {
-  const [logged, setLogged] = useState(true)
+  const [logged, setLogged] = useState(true);
+  
   return (
     <BrowserRouter>
       <ResetStyle/>
