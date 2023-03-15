@@ -1,5 +1,9 @@
+import { HistoricContainer, HistoricTitle, NoHistoricMessage } from "./historicStyles"
 export default function HistoricPage(){
   return (
-    <div>Pagina de Historico</div>
+    <HistoricContainer>
+      <HistoricTitle>Histórico</HistoricTitle>
+      <NoHistoricMessage>Em breve você poderá ver o histórico dos seus hábitos aqui!</NoHistoricMessage>
+    </HistoricContainer>
   )
 }

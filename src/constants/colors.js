@@ -14,7 +14,8 @@ const colors = {
   currentDay : "#126BA5",
   message : "#BABABA",
   habitCompleted : "#8FC549",
-  habitNotCompleted : "#EBEBEB"
+  habitNotCompleted : "#EBEBEB",
+  historicTitle : "#126BA5"
 };
 
 export default colors;

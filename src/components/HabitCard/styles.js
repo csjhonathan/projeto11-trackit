@@ -1,6 +1,6 @@
 import colors from "../../constants/colors";
 import styled from "styled-components";
-
+import { ImBin } from "react-icons/im";
 export const StyledHabitCard = styled.div`
   width: 94vw;
   height: 91px;
@@ -46,4 +46,9 @@ export const DeletButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-` 
+`
+export const DeleteIcon = styled(ImBin)`
+  width: 13px;
+  height: 15px;
+  color: ${colors.habitTitle};
+`
