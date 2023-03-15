@@ -24,8 +24,8 @@ function App() {
       <Routes>
         <Route path ="/" element = {<LoginPage />}></Route>
         <Route path ="/cadastro" element = {<Register/>}></Route>
-        <Route path ="/habitos" element = {<HabitsPage setLogged = {setLogged}/>}></Route>
-        <Route path ="/hoje" element = {<TodayPage/>}></Route>
+        <Route path ="/habitos" element = {<HabitsPage/>}></Route>
+        <Route path ="/hoje" element = {<TodayPage setLogged = {setLogged}/>}></Route>
         <Route path ="/historico" element = {<HistoricPage/>}></Route>
       </Routes>
       {logged && <NavBar/>}

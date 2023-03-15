@@ -4,9 +4,9 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import 'react-circular-progressbar/dist/styles.css';
 export default function NavBar(){
   return (
-    <StyledNavBar> 
-      <Link to = "/habitos">Habitos</Link>
-      <Link to = "/hoje">
+    <StyledNavBar data-test="menu"> 
+      <Link to = "/habitos"  data-test="habit-link">Habitos</Link>
+      <Link to = "/hoje" data-test="today-link">
         <Today>
         <CircularProgressbar
         value={36}
@@ -22,7 +22,7 @@ export default function NavBar(){
       />
         </Today>
       </Link>
-      <Link to = "/historico">Histórico</Link>
+      <Link to = "/historico" data-test="history-link">Histórico</Link>
 
     </StyledNavBar>
   )

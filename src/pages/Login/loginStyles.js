@@ -50,6 +50,10 @@ const InputLoginForm = styled.input`
   &::placeholder{
     color: ${colors.placeholder};
   }
+  &:disabled{
+    background-color: #F2F2F2;
+    color: #AFAFAF;
+  }
 `
 const LoginButton = styled.button`
   width: 303px;
@@ -64,5 +68,9 @@ const LoginButton = styled.button`
   line-height: 26px;
   text-align: center;
   color : ${colors.neutral};
+
+  &:disabled{
+    opacity: 0.7;
+  }
 `
 export {LoginContainer, Logo, LoginForm, InputLoginForm, LoginButton};

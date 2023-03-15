@@ -3,12 +3,10 @@ import { HabitsContainer, MyHabits, AddHabitButton, EmptyMessage } from "./habit
 import { HabitsListContainer } from "./habitsStyles";
 import HabitCard from "../../components/HabitCard/HabitCard";
 import AddHabit from "../../components/AddHabit/AddHabit ";
-export default function HabitsPage({setLogged}) {
+export default function HabitsPage() {
   const [habits, setHabits] = useState(undefined);
   const [creatingHabit, setCreatingHabit] = useState(false);
-  useEffect(()=> {
-    setLogged(true)
-  },[])
+  
   return (
     <HabitsContainer>
       <MyHabits>

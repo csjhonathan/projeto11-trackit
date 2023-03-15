@@ -1,8 +1,12 @@
 import { TodayContainer, CurrentDay, Message, CurrentHabitsList, CurrentDateContainer } from "./todaystyles";
 import weekdays from "../../constants/weekdaysName";
 import CurrentHabitCard from "../../components/CurrentHabitCard/CurrentHabitCard";
-export default function TodayPage(){
+import { useEffect } from "react";
+export default function TodayPage({setLogged}){
   const dayjs = require("dayjs");
+  useEffect(()=> {
+    setLogged(true)
+  },[])
   function currentDay(){
     return `${weekdays[dayjs().format("dddd")]}, ${dayjs().format("DD")}/${dayjs().format("MM")}`
   }

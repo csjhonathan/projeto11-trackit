@@ -5,20 +5,22 @@ import { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../constants/BASE_URL";
 export default function LoginPage (){
+  const [disabled, setDisabled] = useState(false)
   const [login, setLogin] = useState({email : "", password : ""})
   const navigate = useNavigate();
   
 
   function tryToLogin (e){
     e.preventDefault();
-
+    setDisabled(true)
     axios.post(`${BASE_URL}/auth/login`, login)
       .then(({data}) => {
         console.log(data)
-        navigate("/habitos")
+        navigate("/hoje")
       })
       .catch(erro => {
         alert(erro.response.data.message)
+        setDisabled(false)
       })
     // setLogged(true);
     // navigate("/habitos")
@@ -41,6 +43,7 @@ export default function LoginPage (){
 
           value = {login.email}
           onChange={e => handleUserLogin(e.target)}
+          disabled={disabled}
 
           data-test="email-input"
         />
@@ -53,11 +56,12 @@ export default function LoginPage (){
 
           value= {login.password}
           onChange={e => handleUserLogin(e.target)}
+          disabled={disabled}
 
           data-test="password-input"
         />
 
-        <LoginButton type="submit"  data-test="login-btn">
+        <LoginButton type="submit" disabled={disabled} data-test="login-btn">
           Entrar
         </LoginButton>
 
