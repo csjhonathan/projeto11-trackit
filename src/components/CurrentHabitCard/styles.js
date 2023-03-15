@@ -38,7 +38,14 @@ export const ContentContainer = styled.div`
   justify-content: space-evenly;
 `
 export const CheckIcon = styled(FaCheckSquare)`
-  color: ${({ isCompleted }) => isCompleted ? colors.habitCompleted : colors.habitNotCompleted};
+  color: ${({ checked }) => checked ? colors.habitCompleted : colors.habitNotCompleted};
   width: 79px;
   height: 79px;
+`
+export const Current = styled.span`
+  color: ${({checked}) => checked && colors.completed};
+`
+
+export const Highest = styled.span`
+  color: ${({checked}) => checked ? colors.completed : ""};
 `

@@ -14,7 +14,8 @@ export default function HabitCard({id, text, days}) {
     }
   };
   function deleteHabit (habitId) {
-    axios.delete(`${BASE_URL}/habits/${habitId}`, config)
+    if(window.confirm("REALMENTE DESEJA ESCLUIR ESSE HÁBITO?")){
+      axios.delete(`${BASE_URL}/habits/${habitId}`, config)
       .then((resposta)=>{
         axios.get(`${BASE_URL}/habits`, config)
           .then(({data})=> {
@@ -24,9 +25,10 @@ export default function HabitCard({id, text, days}) {
             alert(erro.response.data.message)
           })
       })
-      .catch(()=> {
-        console.log("Erro ao deletar habito")
+      .catch((erro)=> {
+        alert(erro.response.data.message)
       })
+    }
   }
   return (
     <StyledHabitCard data-test="habit-container">

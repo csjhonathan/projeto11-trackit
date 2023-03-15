@@ -29,9 +29,11 @@ export default function AddHabit ({setCreatingHabit}){
 
   //adicionar um habito e mostrar a nova lista
   function addHabit (e){
-    e.preventDefault()
-    if(weekdays.length === 0){
-      alert("Escolha pelo menos um dia")
+    e.preventDefault();
+
+    
+    if(weekdays.length === 0 || habitName === ""){
+      alert("Preencha todos os dados corretamente")
       return;
     }
     setSendingHabit(true)
@@ -55,7 +57,6 @@ export default function AddHabit ({setCreatingHabit}){
     <AddHabitContainer data-test="habit-create-container">
       <AddHabitForm onSubmit={addHabit}>
           <HabitTitleInput 
-            required
             placeholder="nome do hábito"
             value={habitName}
 
@@ -78,7 +79,7 @@ export default function AddHabit ({setCreatingHabit}){
             })}
           </DaysContainer>
           <SubmitContainer>
-            <CancelHabitButton type="button" onClick={() => setCreatingHabit(false)} data-test="habit-create-cancel-btn">Cancelar</CancelHabitButton>
+            <CancelHabitButton type="button" disabled = {sendingHabit} onClick={() => setCreatingHabit(false)} data-test="habit-create-cancel-btn">Cancelar</CancelHabitButton>
             <SaveHabitButton type="submit" disabled = {sendingHabit} data-test="habit-create-save-btn">{sendingHabit ? <Loader/> : "Salvar"}</SaveHabitButton>
           </SubmitContainer>
       </AddHabitForm>

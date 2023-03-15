@@ -19,13 +19,11 @@ export default function HabitsPage() {
   useEffect(() => {
     axios.get(`${BASE_URL}/habits`, config)
       .then(({data})=> {
-        console.log("sucesso")
-        console.log(data)
+        
         setUserData({...userData, habitsList : data})
       })
       .catch((erro)=> {
-        console.log("erro")
-        console.log(erro.response.data)
+        alert(erro.response.data.message)
       })
   }, [])
 

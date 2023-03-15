@@ -18,7 +18,6 @@ export default function Register() {
     setDisabled(true)
     axios.post(`${BASE_URL}/auth/sign-up`, register)
       .then(() => {
-        console.log("cadastrado com sucesso");
         navigate("/");
       })
       .catch(erro => {

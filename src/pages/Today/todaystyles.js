@@ -28,7 +28,7 @@ export const Message = styled.p`
   font-weight: 400;
   font-size: 17.976px;
   line-height: 22px;
-  color: ${colors.message};
+  color: ${({check}) => check ? colors.completed : colors.message};
 
 `
 export const CurrentHabitsList = styled.div`

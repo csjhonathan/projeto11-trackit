@@ -18,7 +18,6 @@ export default function LoginPage (){
     setDisabled(true)
     axios.post(`${BASE_URL}/auth/login`, login)
       .then(({data}) => {
-        console.log(data)
         setUserData({...userData, isLogged : true, token : data.token, image : data.image})
         navigate("/hoje")
       })
