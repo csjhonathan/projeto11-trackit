@@ -1,6 +1,6 @@
 // dependencies & hooks
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
 import UserContext from "./contextAPI/userContext";
 // pages & components
 import LoginPage from "./pages/Login/LoginPage";
@@ -16,7 +16,7 @@ import ResetStyle from "./GlobalStyles/Reset ";
 
 function App() {
   const [userData, setUserData] = useState({token : "", isLogged : false, image : "" , habitsList : [], todayHabitsList : [], completedHabits: []});
-  
+ 
   return (
     <UserContext.Provider value={{userData, setUserData}}>
       <BrowserRouter>

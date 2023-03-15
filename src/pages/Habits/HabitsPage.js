@@ -6,10 +6,12 @@ import AddHabit from "../../components/AddHabit/AddHabit ";
 import UserContext from "../../contextAPI/userContext";
 import axios from "axios"
 import BASE_URL from "../../constants/BASE_URL";
+import { useNavigate } from "react-router-dom";
 export default function HabitsPage() {
   // const [habits, setHabits] = useState(undefined);
   const [creatingHabit, setCreatingHabit] = useState(false);
   const {userData, setUserData} = useContext(UserContext);
+  const navigate = useNavigate()
   const config = {
     headers: {
         "Authorization": `Bearer ${userData.token}`
@@ -24,6 +26,10 @@ export default function HabitsPage() {
       .catch((erro)=> {
         alert(erro.response.data.message)
       })
+      
+      if(!userData.isLogged){
+          navigate("/")
+        }
   }, [])
 
   return (

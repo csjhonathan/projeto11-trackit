@@ -8,7 +8,8 @@ import Loader from "../../components/Loader/Loader";
 export default function Register() {
   const [register, setRegister] = useState({ email: "", name: "", image: "", password: "" });
   const [disabled, setDisabled] = useState(false)
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   function handleFormData(e) {
     setRegister({...register, [e.name] : e.value})
   }

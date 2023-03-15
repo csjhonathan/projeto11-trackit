@@ -5,10 +5,12 @@ import { useEffect, useContext, useState } from "react";
 import UserContext from "../../contextAPI/userContext";
 import BASE_URL from "../../constants/BASE_URL";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function TodayPage(){
   const {userData, setUserData} = useContext(UserContext);
   const [completed, setCompleted] = useState([]);
   const dayjs = require("dayjs");
+  const navigate = useNavigate()
   const config = {
     headers: {
         "Authorization": `Bearer ${userData.token}`
@@ -24,6 +26,10 @@ export default function TodayPage(){
       .catch(erro => {
         console.log(erro)
       })
+
+      if(!userData.isLogged){
+        navigate("/")
+      }
   }, [userData.completedHabits])
   function currentDay(){
     return `${weekdays[dayjs().format("dddd")]}, ${dayjs().format("DD")}/${dayjs().format("MM")}`

@@ -38,9 +38,9 @@ export default function CurrentHabitCard({id, name, done, currentSequence, highe
   return (
     <HabitCard isCompleted = {isChecked} data-test="today-habit-container">
       <ContentContainer>
-        <Title data-test="today-habit-name"> {name} </Title>
+        <Title data-test="today-habit-name">{name}</Title>
         <ProgressContainer>
-          <Progress data-test="today-habit-sequence">Sequencia atual: <Current checked = {currentSequence===highestSequence && currentSequence !== 0 ? true : done}>{currentSequence}</Current></Progress>
+          <Progress >Sequencia atual: <Current checked = {currentSequence===highestSequence && currentSequence !== 0 ? true : done} data-test="today-habit-sequence">{currentSequence}</Current></Progress>
           <Progress  data-test="today-habit-record">Seu recorde: <Highest checked = {currentSequence===highestSequence && highestSequence !== 0}>{highestSequence}</Highest></Progress>
         </ProgressContainer>
       </ContentContainer>
