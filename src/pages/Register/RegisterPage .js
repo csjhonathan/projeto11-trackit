@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../constants/BASE_URL"
+import Loader from "../../components/Loader/Loader";
 export default function Register() {
   const [register, setRegister] = useState({ email: "", name: "", image: "", password: "" });
+  const [disabled, setDisabled] = useState(false)
   const navigate = useNavigate()
   function handleFormData(e) {
     setRegister({...register, [e.name] : e.value})
@@ -13,14 +15,15 @@ export default function Register() {
 
   function registerUser(e) {
     e.preventDefault();
-    
+    setDisabled(true)
     axios.post(`${BASE_URL}/auth/sign-up`, register)
       .then(() => {
-        console.log("cadastrado com sucesso")
+        console.log("cadastrado com sucesso");
         navigate("/");
       })
       .catch(erro => {
         alert(erro.response.data.message)
+        setDisabled(false);
       })
 
   }
@@ -38,6 +41,7 @@ export default function Register() {
 
           value = {register.email}
           onChange = {e => handleFormData(e.target)}
+          disabled = {disabled}
 
           data-test="email-input"
         />
@@ -50,6 +54,7 @@ export default function Register() {
 
           value = {register.password}
           onChange = {e => handleFormData(e.target)}
+          disabled = {disabled}
 
           data-test="password-input"
         />
@@ -62,6 +67,7 @@ export default function Register() {
 
           value = {register.name}
           onChange = {e => handleFormData(e.target)}
+          disabled = {disabled}
 
           data-test="user-name-input"
         />
@@ -74,12 +80,13 @@ export default function Register() {
 
           value = {register.image}
           onChange = {e => handleFormData(e.target)}
+          disabled = {disabled}
 
           data-test="user-image-input"
         />
 
         <RegisterButton type="submit" data-test="signup-btn">
-          Cadatrar
+        {disabled ? <Loader/> : "CADASTRAR"}
         </RegisterButton>
 
       </RegisterForm>

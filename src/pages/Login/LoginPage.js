@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import BASE_URL from "../../constants/BASE_URL";
+import Loader from "../../components/Loader/Loader";
 export default function LoginPage (){
   const [disabled, setDisabled] = useState(false)
   const [login, setLogin] = useState({email : "", password : ""})
@@ -62,7 +63,7 @@ export default function LoginPage (){
         />
 
         <LoginButton type="submit" disabled={disabled} data-test="login-btn">
-          Entrar
+          {disabled ? <Loader/> : "Entrar"}
         </LoginButton>
 
       </LoginForm>

@@ -68,7 +68,9 @@ const LoginButton = styled.button`
   line-height: 26px;
   text-align: center;
   color : ${colors.neutral};
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:disabled{
     opacity: 0.7;
   }

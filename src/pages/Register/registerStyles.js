@@ -51,6 +51,11 @@ const InputRegisterForm = styled.input`
   &::placeholder{
     color: ${colors.placeholder};
   }
+
+  &:disabled{
+    background-color: #F2F2F2;
+    color: #AFAFAF;
+  }
 `
 const RegisterButton = styled.button`
   width: 303px;
@@ -65,6 +70,12 @@ const RegisterButton = styled.button`
   line-height: 26px;
   text-align: center;
   color : ${colors.neutral};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:disabled{
+    opacity: 0.7;
+  }
 `
 
 export {RegisterContainer, Logo, RegisterForm, InputRegisterForm, RegisterButton};
