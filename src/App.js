@@ -14,7 +14,7 @@ import Global from "./GlobalStyles/GlobalStyles";
 import ResetStyle from "./GlobalStyles/Reset ";
 
 function App() {
-  const [logged, setLogged] = useState(true);
+  const [logged, setLogged] = useState(false);
   
   return (
     <BrowserRouter>
@@ -22,9 +22,9 @@ function App() {
       <Global/>
       {logged && <Top/>}
       <Routes>
-        <Route path ="/" element = {<LoginPage setLogged = {setLogged}/>}></Route>
+        <Route path ="/" element = {<LoginPage />}></Route>
         <Route path ="/cadastro" element = {<Register/>}></Route>
-        <Route path ="/habitos" element = {<HabitsPage/>}></Route>
+        <Route path ="/habitos" element = {<HabitsPage setLogged = {setLogged}/>}></Route>
         <Route path ="/hoje" element = {<TodayPage/>}></Route>
         <Route path ="/historico" element = {<HistoricPage/>}></Route>
       </Routes>

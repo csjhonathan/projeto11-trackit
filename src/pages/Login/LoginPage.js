@@ -1,15 +1,31 @@
 import { LoginContainer, Logo, LoginForm, InputLoginForm, LoginButton } from "./loginStyles";
 import img from "../../constants/img";
 import { Link, useNavigate } from "react-router-dom";
-export default function LoginPage ({setLogged}){
-  const navigate = useNavigate()
+import { useState } from "react";
+import axios from "axios";
+import BASE_URL from "../../constants/BASE_URL";
+export default function LoginPage (){
+  const [login, setLogin] = useState({email : "", password : ""})
+  const navigate = useNavigate();
   
+
   function tryToLogin (e){
     e.preventDefault();
-    setLogged(true);
-    navigate("/habitos")
+
+    axios.post(`${BASE_URL}/auth/login`, login)
+      .then(({data}) => {
+        console.log(data)
+        navigate("/habitos")
+      })
+      .catch(erro => {
+        alert(erro.response.data.message)
+      })
+    // setLogged(true);
+    // navigate("/habitos")
   }
-  
+  function handleUserLogin(e){
+    setLogin({...login, [e.name] : e.value})
+  }
   return (
     <LoginContainer>
 
@@ -20,24 +36,34 @@ export default function LoginPage ({setLogged}){
         <InputLoginForm
           required 
           type="email"
+          name="email"
           placeholder="email"
-          value = "email@email.com"
+
+          value = {login.email}
+          onChange={e => handleUserLogin(e.target)}
+
+          data-test="email-input"
         />
 
         <InputLoginForm
           required
           type="password"
+          name="password"
           placeholder="senha"
-          value="123456"
+
+          value= {login.password}
+          onChange={e => handleUserLogin(e.target)}
+
+          data-test="password-input"
         />
 
-        <LoginButton type="submit">
+        <LoginButton type="submit"  data-test="login-btn">
           Entrar
         </LoginButton>
 
       </LoginForm>
 
-      <Link to = "/cadastro">
+      <Link to = "/cadastro" data-test="signup-link">
         Não tem uma conta? Cadastre-se!
       </Link>
 
