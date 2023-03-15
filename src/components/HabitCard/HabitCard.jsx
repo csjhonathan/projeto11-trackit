@@ -19,7 +19,7 @@ export default function HabitCard({id, text, days}) {
       .then((resposta)=>{
         axios.get(`${BASE_URL}/habits`, config)
           .then(({data})=> {
-            setUserData({...userData, habitsList : data})
+            checkTodayHabits(data)
           })
           .catch((erro)=> {
             alert(erro.response.data.message)
@@ -30,6 +30,19 @@ export default function HabitCard({id, text, days}) {
       })
     }
   }
+
+  function checkTodayHabits(recenthabit) {
+    axios.get(`${BASE_URL}/habits/today`, config)
+      .then(({data}) => {
+        setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done ===true), habitsList : recenthabit})
+        console.log(data)
+        console.log(userData)
+      })
+      .catch(erro => {
+        console.log(erro)
+      })
+  }
+
   return (
     <StyledHabitCard data-test="habit-container">
       <HabitTitle data-test="habit-name">{text}</HabitTitle>

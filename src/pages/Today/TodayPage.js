@@ -14,8 +14,7 @@ export default function TodayPage(){
         "Authorization": `Bearer ${userData.token}`
     }
   };
-  const percentage = (completed.length/userData.todayHabitsList.length)*100;
-
+  const percentage = Math.floor((completed.length/userData.todayHabitsList.length)*100);
   useEffect(()=> {
     axios.get(`${BASE_URL}/habits/today`, config)
       .then(({data}) => {
@@ -50,8 +49,6 @@ export default function TodayPage(){
               done = {done}
               currentSequence = {currentSequence}
               highestSequence = {highestSequence}
-
-              data-test="today-habit-container"
             />
           )
         })}

@@ -19,7 +19,6 @@ export default function HabitsPage() {
   useEffect(() => {
     axios.get(`${BASE_URL}/habits`, config)
       .then(({data})=> {
-        
         setUserData({...userData, habitsList : data})
       })
       .catch((erro)=> {

@@ -14,14 +14,14 @@ export default function NavBar() {
     setCompleted(userData.todayHabitsList.filter(({done}) => done === true))
   }, [userData.todayHabitsList]);
   
-  const percentage = (completed.length / userData.todayHabitsList.length) * 100;
+  const percentage = Math.floor((completed.length / userData.todayHabitsList.length) * 100);
   return (
     <StyledNavBar data-test="menu">
       <Link to="/habitos" data-test="habit-link">Habitos</Link>
       <Link to="/hoje" data-test="today-link">
         <Today>
           <CircularProgressbar
-            value={percentage === NaN ? 0 : percentage}
+            value={Number.isNaN(percentage) ? 0 : percentage}
             text={"Hoje"}
             background
             backgroundPadding={6}

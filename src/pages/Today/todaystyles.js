@@ -9,6 +9,7 @@ export const TodayContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 `
 export const CurrentDay = styled.h1`
   width: 172px;

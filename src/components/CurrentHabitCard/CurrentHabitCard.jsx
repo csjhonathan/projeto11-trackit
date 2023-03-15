@@ -36,7 +36,7 @@ export default function CurrentHabitCard({id, name, done, currentSequence, highe
     }
   }
   return (
-    <HabitCard isCompleted = {isChecked} >
+    <HabitCard isCompleted = {isChecked} data-test="today-habit-container">
       <ContentContainer>
         <Title data-test="today-habit-name"> {name} </Title>
         <ProgressContainer>

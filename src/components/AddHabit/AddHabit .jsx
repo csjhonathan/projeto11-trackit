@@ -36,6 +36,7 @@ export default function AddHabit ({setCreatingHabit}){
       alert("Preencha todos os dados corretamente")
       return;
     }
+    
     setSendingHabit(true)
     axios.post(`${BASE_URL}/habits`, {name: habitName, days: weekdays}, config)
       .then(() => {
@@ -43,7 +44,7 @@ export default function AddHabit ({setCreatingHabit}){
         setCreatingHabit(false)
         axios.get(`${BASE_URL}/habits`, config)
           .then(({data})=> {
-            setUserData({...userData, habitsList : data})
+            checkTodayHabits(data)
           })
           .catch((erro)=> {
             alert(erro.response.data.message)
@@ -51,6 +52,18 @@ export default function AddHabit ({setCreatingHabit}){
       })
       .catch(erro => {
         alert(erro.response.data.message)
+      })
+  }
+
+  function checkTodayHabits(recenthabit) {
+    axios.get(`${BASE_URL}/habits/today`, config)
+      .then(({data}) => {
+        setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done ===true), habitsList : recenthabit})
+        console.log(data)
+        console.log(userData)
+      })
+      .catch(erro => {
+        console.log(erro)
       })
   }
   return (
