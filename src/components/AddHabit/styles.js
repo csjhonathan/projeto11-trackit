@@ -66,6 +66,9 @@ export const SaveHabitButton = styled.button`
   border-radius: 5px;
   border: none;
   color: ${colors.neutral};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 `
 export const CancelHabitButton = styled.button`

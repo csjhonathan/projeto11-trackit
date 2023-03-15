@@ -85,7 +85,7 @@ export default function Register() {
           data-test="user-image-input"
         />
 
-        <RegisterButton type="submit" data-test="signup-btn">
+        <RegisterButton type="submit" disabled = {disabled} data-test="signup-btn">
         {disabled ? <Loader/> : "CADASTRAR"}
         </RegisterButton>
 

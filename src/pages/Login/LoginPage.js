@@ -1,15 +1,17 @@
 import { LoginContainer, Logo, LoginForm, InputLoginForm, LoginButton } from "./loginStyles";
 import img from "../../constants/img";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import BASE_URL from "../../constants/BASE_URL";
 import Loader from "../../components/Loader/Loader";
+import UserContext from "../../contextAPI/userContext";
+
 export default function LoginPage (){
   const [disabled, setDisabled] = useState(false)
   const [login, setLogin] = useState({email : "", password : ""})
   const navigate = useNavigate();
-  
+  const {userData, setUserData} = useContext(UserContext)
 
   function tryToLogin (e){
     e.preventDefault();
@@ -17,6 +19,7 @@ export default function LoginPage (){
     axios.post(`${BASE_URL}/auth/login`, login)
       .then(({data}) => {
         console.log(data)
+        setUserData({...userData, isLogged : true, token : data.token, image : data.image})
         navigate("/hoje")
       })
       .catch(erro => {
