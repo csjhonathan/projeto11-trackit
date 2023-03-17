@@ -16,13 +16,14 @@ export default function TodayPage(){
         "Authorization": `Bearer ${userData.token}`
     }
   };
-  const percentage = Math.floor((completed.length/userData.todayHabitsList.length)*100);
 
+  
+  const percentage = Math.floor((completed.length/userData.todayHabitsList.length)*100);
   useEffect(()=> {
     axios.get(`${BASE_URL}/today`, config)
       .then(({data}) => {
-        setCompleted(data.filter(({done}) => done ===true))
-        setUserData({...userData, todayHabitsList : data})
+        setCompleted(data.filter(({done}) => done === true))
+        setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done === true)})
       })
       .catch(erro => {
         console.log(erro)
@@ -31,10 +32,12 @@ export default function TodayPage(){
       if(!userData.isLogged){
         navigate("/")
       }
-  }, [userData.completedHabits])
+  }, []);
+  
   function currentDay(){
     return `${weekdays[dayjs().format("dddd")]}, ${dayjs().format("DD")}/${dayjs().format("MM")}`
   }
+
   return (
     <TodayContainer>
       <CurrentDateContainer>
@@ -56,6 +59,8 @@ export default function TodayPage(){
               done = {done}
               currentSequence = {currentSequence}
               highestSequence = {highestSequence}
+              completed = {completed}
+              setCompleted = {setCompleted}
             />
           )
         })}

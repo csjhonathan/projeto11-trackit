@@ -35,8 +35,7 @@ export default function HabitCard({id, text, days}) {
     axios.get(`${BASE_URL}/today`, config)
       .then(({data}) => {
         setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done ===true), habitsList : recenthabit})
-        console.log(data)
-        console.log(userData)
+  
       })
       .catch(erro => {
         console.log(erro)

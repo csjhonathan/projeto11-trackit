@@ -59,8 +59,6 @@ export default function AddHabit ({setCreatingHabit}){
     axios.get(`${BASE_URL}/today`, config)
       .then(({data}) => {
         setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done ===true), habitsList : recenthabit})
-        console.log(data)
-        console.log(userData)
       })
       .catch(erro => {
         console.log(erro)

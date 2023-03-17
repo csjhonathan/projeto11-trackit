@@ -9,12 +9,14 @@ import BASE_URL from "../../constants/BASE_URL";
 export default function NavBar() {
   const { userData, setUserData } = useContext(UserContext);
   const [completed, setCompleted] = useState([]);
-  useEffect(()=> {
-    console.log()
-    setCompleted(userData.todayHabitsList.filter(({done}) => done === true))
-  }, [userData.todayHabitsList]);
+  const [percentage, setPercentage] = useState(0)
   
-  const percentage = Math.floor((completed.length / userData.todayHabitsList.length) * 100);
+  
+  useEffect(()=> {
+    setCompleted(userData.completedHabits)
+    setPercentage(Math.floor((userData.completedHabits.length/ userData.todayHabitsList.length) * 100))
+  }, [userData.completedHabits]);
+  
   return (
     <StyledNavBar data-test="menu">
       <Link to="/habitos" data-test="habit-link">Habitos</Link>

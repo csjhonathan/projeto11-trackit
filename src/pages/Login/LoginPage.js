@@ -1,4 +1,4 @@
-import { LoginContainer, Logo, LoginForm, InputLoginForm, InputLoginFormCheckBox, LoginButton , KeepLoggedArea, CheckLabel } from "./loginStyles";
+import { LoginContainer, Logo, LoginForm, InputLoginForm, InputLoginFormCheckBox, LoginButton, KeepLoggedArea, CheckLabel } from "./loginStyles";
 import img from "../../constants/img";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
@@ -19,19 +19,19 @@ export default function LoginPage() {
       setUserData({ ...userData, isLogged: localStorage.isLogged, token: localStorage.token, image: localStorage.image });
       navigate("/hoje");
     }
-  }, [])
+  }, []);
   function tryToLogin(e) {
     e.preventDefault();
     setDisabled(true)
     axios.post(`${BASE_URL_LOGIN}/auth/login`, login)
       .then(({ data }) => {
-        setUserData({ ...userData, isLogged: true, token: data.token, image: data.image });
         if (keepLogin) {
           localStorage.clear();
           localStorage.setItem("isLogged", true)
           localStorage.setItem("token", data.token)
           localStorage.setItem("image", data.image)
         }
+        setUserData({ ...userData, isLogged: true, token: data.token, image: data.image });
         navigate("/hoje")
       })
       .catch(erro => {

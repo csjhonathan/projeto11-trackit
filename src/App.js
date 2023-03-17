@@ -15,22 +15,22 @@ import Global from "./GlobalStyles/GlobalStyles";
 import ResetStyle from "./GlobalStyles/Reset ";
 
 function App() {
-  const [userData, setUserData] = useState({token : "", isLogged : false, image : "" , habitsList : [], todayHabitsList : [], completedHabits: [], userHistoric : []});
- 
+  const [userData, setUserData] = useState({ token: "", isLogged: false, image: "", habitsList: [], todayHabitsList: [], completedHabits: [], userHistoric: [] });
+  console.log(userData.todayHabitsList)
   return (
-    <UserContext.Provider value={{userData, setUserData}}>
+    <UserContext.Provider value={{ userData, setUserData }}>
       <BrowserRouter>
-        <ResetStyle/>
-        <Global/>
-        {userData.isLogged && <Header/>}
+        <ResetStyle />
+        <Global />
+        {userData.isLogged && <Header />}
         <Routes>
-          <Route path ="/" element = {<LoginPage />}></Route>
-          <Route path ="/cadastro" element = {<Register/>}></Route>
-          <Route path ="/habitos" element = {<HabitsPage/>}></Route>
-          <Route path ="/hoje" element = {<TodayPage />}></Route>
-          <Route path ="/historico" element = {<HistoricPage/>}></Route>
+          <Route path="/" element={<LoginPage />}></Route>
+          <Route path="/cadastro" element={<Register />}></Route>
+          <Route path="/habitos" element={<HabitsPage />}></Route>
+          <Route path="/hoje" element={<TodayPage />}></Route>
+          <Route path="/historico" element={<HistoricPage />}></Route>
         </Routes>
-        {userData.isLogged && <NavBar/>}
+        {userData.isLogged && <NavBar />}
       </BrowserRouter>
     </UserContext.Provider>
   );
