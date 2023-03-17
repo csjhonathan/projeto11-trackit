@@ -1,12 +1,32 @@
-import { useEffect , useContext} from "react";
+import { useEffect , useContext, useState} from "react";
 import { useNavigate } from "react-router-dom"
-import { HistoricContainer, HistoricTitle, NoHistoricMessage } from "./historicStyles"
+import { HistoricContainer, HistoricTitle, NoHistoricMessage} from "./historicStyles"
 import UserContext from "../../contextAPI/userContext";
-
+import HistoricCalendar from "../../components/HistoricCalendar/HistoricCalendar";
+import BASE_URL from "../../constants/BASE_URL";
+import axios from "axios";
 export default function HistoricPage(){
   const navigate = useNavigate ();
   const {userData, setUserData} = useContext(UserContext);
-  useEffect(()=> {
+  const [historicHabits, setHistoricHabits] = useState();
+  const config = {
+    headers: {
+        "Authorization": `Bearer ${userData.token}`
+    }
+  };
+
+  useEffect(() => {
+
+    axios.get(`${BASE_URL}/history/daily`, config)
+      .then(({data}) => {
+        const historic =data
+        setHistoricHabits(historic)
+      })
+      .catch(erro => {
+        console.log("erro")
+        setHistoricHabits(erro)
+      })
+
     if(!userData.isLogged){
         navigate("/")
       }
@@ -15,7 +35,9 @@ export default function HistoricPage(){
   return (
     <HistoricContainer>
       <HistoricTitle>Histórico</HistoricTitle>
-      <NoHistoricMessage>Em breve você poderá ver o histórico dos seus hábitos aqui!</NoHistoricMessage>
+      <div data-test="calendar">
+        <HistoricCalendar historicHabits = {historicHabits}/>
+      </div> 
     </HistoricContainer>
   )
 }

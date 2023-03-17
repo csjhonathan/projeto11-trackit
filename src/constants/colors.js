@@ -15,7 +15,8 @@ const colors = {
   message : "#BABABA",
   habitCompleted : "#8FC549",
   habitNotCompleted : "#EBEBEB",
-  historicTitle : "#126BA5"
+  historicTitle : "#126BA5",
+  habitNotCompletedHistoric : "#EA5766"
 };
 
 export default colors;

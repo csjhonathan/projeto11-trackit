@@ -38,11 +38,11 @@ export default function AddHabit ({setCreatingHabit}){
     }
     
     setSendingHabit(true)
-    axios.post(`${BASE_URL}/habits`, {name: habitName, days: weekdays}, config)
+    axios.post(BASE_URL, {name: habitName, days: weekdays}, config)
       .then(() => {
         setSendingHabit(false)
         setCreatingHabit(false)
-        axios.get(`${BASE_URL}/habits`, config)
+        axios.get(BASE_URL, config)
           .then(({data})=> {
             checkTodayHabits(data)
           })
@@ -56,7 +56,7 @@ export default function AddHabit ({setCreatingHabit}){
   }
 
   function checkTodayHabits(recenthabit) {
-    axios.get(`${BASE_URL}/habits/today`, config)
+    axios.get(`${BASE_URL}/today`, config)
       .then(({data}) => {
         setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done ===true), habitsList : recenthabit})
         console.log(data)

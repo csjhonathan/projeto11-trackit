@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "../../constants/colors";
-
+import Calendar from "react-calendar";
 
 export const HistoricContainer = styled.div`
   padding: 98px 18px 70px 18px;
@@ -8,6 +8,26 @@ export const HistoricContainer = styled.div`
   background-color: ${colors.appBackground};
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  >div{
+    > div{
+    border-radius: 5px;
+    border: none;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button{
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  }
 `
 export const HistoricTitle = styled.h1`
   

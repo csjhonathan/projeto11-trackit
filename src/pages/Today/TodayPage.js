@@ -10,15 +10,16 @@ export default function TodayPage(){
   const {userData, setUserData} = useContext(UserContext);
   const [completed, setCompleted] = useState([]);
   const dayjs = require("dayjs");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const config = {
     headers: {
         "Authorization": `Bearer ${userData.token}`
     }
   };
   const percentage = Math.floor((completed.length/userData.todayHabitsList.length)*100);
+
   useEffect(()=> {
-    axios.get(`${BASE_URL}/habits/today`, config)
+    axios.get(`${BASE_URL}/today`, config)
       .then(({data}) => {
         setCompleted(data.filter(({done}) => done ===true))
         setUserData({...userData, todayHabitsList : data})

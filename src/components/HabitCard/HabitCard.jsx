@@ -15,9 +15,9 @@ export default function HabitCard({id, text, days}) {
   };
   function deleteHabit (habitId) {
     if(window.confirm("REALMENTE DESEJA ESCLUIR ESSE HÁBITO?")){
-      axios.delete(`${BASE_URL}/habits/${habitId}`, config)
+      axios.delete(`${BASE_URL}/${habitId}`, config)
       .then((resposta)=>{
-        axios.get(`${BASE_URL}/habits`, config)
+        axios.get(BASE_URL, config)
           .then(({data})=> {
             checkTodayHabits(data)
           })
@@ -32,7 +32,7 @@ export default function HabitCard({id, text, days}) {
   }
 
   function checkTodayHabits(recenthabit) {
-    axios.get(`${BASE_URL}/habits/today`, config)
+    axios.get(`${BASE_URL}/today`, config)
       .then(({data}) => {
         setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done ===true), habitsList : recenthabit})
         console.log(data)

@@ -19,7 +19,7 @@ export default function HabitsPage() {
   };
   
   useEffect(() => {
-    axios.get(`${BASE_URL}/habits`, config)
+    axios.get(BASE_URL, config)
       .then(({data})=> {
         setUserData({...userData, habitsList : data})
       })

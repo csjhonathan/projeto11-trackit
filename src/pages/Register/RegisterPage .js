@@ -3,7 +3,7 @@ import img from "../../constants/img";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import BASE_URL from "../../constants/BASE_URL"
+import BASE_URL_LOGIN from "../../constants/BASE_URL_LOGIN"
 import Loader from "../../components/Loader/Loader";
 export default function Register() {
   const [register, setRegister] = useState({ email: "", name: "", image: "", password: "" });
@@ -17,7 +17,7 @@ export default function Register() {
   function registerUser(e) {
     e.preventDefault();
     setDisabled(true)
-    axios.post(`${BASE_URL}/auth/sign-up`, register)
+    axios.post(`${BASE_URL_LOGIN}/auth/sign-up`, register)
       .then(() => {
         navigate("/");
       })

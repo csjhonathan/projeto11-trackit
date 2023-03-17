@@ -32,7 +32,7 @@ const LoginForm = styled.form`
   justify-content: space-between;
   margin-top: 32px;
   margin-bottom: 32px;
-  height: 145px;
+  height: 180px;
 `
 const InputLoginForm = styled.input`
   width: 303px;
@@ -75,4 +75,23 @@ const LoginButton = styled.button`
     opacity: 0.7;
   }
 `
-export {LoginContainer, Logo, LoginForm, InputLoginForm, LoginButton};
+const KeepLoggedArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+`
+const InputLoginFormCheckBox = styled.input`
+  align-self: flex-end;
+  width: 20px;
+  height: 20px;
+  
+`
+const CheckLabel = styled.label`
+  font-family: 'Lexend Deca';
+`
+
+export {LoginContainer, Logo, LoginForm, InputLoginForm, LoginButton, InputLoginFormCheckBox, KeepLoggedArea, CheckLabel};
