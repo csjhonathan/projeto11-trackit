@@ -1,7 +1,7 @@
 import { TodayContainer, CurrentDay, Message, CurrentHabitsList, CurrentDateContainer } from "./todaystyles";
 import weekdays from "../../constants/weekdaysName";
 import CurrentHabitCard from "../../components/CurrentHabitCard/CurrentHabitCard";
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useState, useMemo } from "react";
 import UserContext from "../../contextAPI/userContext";
 import BASE_URL from "../../constants/BASE_URL";
 import axios from "axios";
@@ -16,13 +16,11 @@ export default function TodayPage(){
         "Authorization": `Bearer ${userData.token}`
     }
   };
-
-  
+  const dados = useMemo(() => userData , [])
   const percentage = Math.floor((completed.length/userData.todayHabitsList.length)*100);
   useEffect(()=> {
     axios.get(`${BASE_URL}/today`, config)
       .then(({data}) => {
-        setCompleted(data.filter(({done}) => done === true))
         setUserData({...userData, todayHabitsList : data, completedHabits : data.filter(({done}) => done === true)})
       })
       .catch(erro => {
@@ -32,7 +30,7 @@ export default function TodayPage(){
       if(!userData.isLogged){
         navigate("/")
       }
-  }, []);
+  }, [completed]);
   
   function currentDay(){
     return `${weekdays[dayjs().format("dddd")]}, ${dayjs().format("DD")}/${dayjs().format("MM")}`
