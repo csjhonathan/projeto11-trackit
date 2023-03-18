@@ -4,14 +4,14 @@ import Calendar from "react-calendar";
 
 export const HistoricContainer = styled.div`
   padding: 98px 18px 70px 18px;
-  height: 100vh;
+  height: 90vh;
   background-color: ${colors.appBackground};
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  >div{
-    > div{
+  
+  .react-calendar {
     border-radius: 5px;
     border: none;
     height: 400px;
@@ -27,7 +27,7 @@ export const HistoricContainer = styled.div`
       align-items: center;
     }
   }
-  }
+  
 `
 export const HistoricTitle = styled.h1`
   

@@ -11,7 +11,6 @@ export default function NavBar() {
   const [completed, setCompleted] = useState([]);
   const [percentage, setPercentage] = useState(0)
   
-  
   useEffect(()=> {
     setCompleted(userData.completedHabits)
     setPercentage(Math.floor((userData.completedHabits.length/ userData.todayHabitsList.length) * 100))

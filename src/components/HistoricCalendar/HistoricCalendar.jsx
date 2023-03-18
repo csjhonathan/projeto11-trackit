@@ -4,30 +4,21 @@ import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 import { useEffect } from "react";
 import { Day, NormalDay } from "./styles";
-
+import HabitsModal from "../HabitsModal/HabitsModal ";
 export default function HistoricCalendar({ historicHabits }) {
 
   const [value, onChange] = useState(new Date());
-  const dayjs = require("dayjs")
-  
+  const [showModal, setShowModal] = useState({show : false, habits : []})
+  const dayjs = require("dayjs");
+
+ 
   function showHabits (habits){
     const manyHabits = habits.habits.map(({name, done}) => {
       return {name , done}
     })
-
-    manyHabits.forEach(({name, done}) => {
-      if(done === undefined){
-        console.log("Nem marcou ainda")
-        return;
-      }
-
-      if(done){
-        console.log(`Você completou ${name}`)
-      }else{
-        console.log(`Você não completou ${name}`)
-      }
-    })
+    setShowModal({show : true ,  habits : manyHabits})
   }
+
   function formatDay(date){
     
     
@@ -69,11 +60,16 @@ export default function HistoricCalendar({ historicHabits }) {
     
   }
   return (
-    <Calendar 
-    calendarType="US"
-    onChange={onChange} 
-    value={value}
-    formatDay = {(_, date) => formatDay(date)}
-    />
+    <>
+      <Calendar 
+        calendarType="US"
+        onChange={onChange} 
+        value={value}
+        formatDay = {(_, date) => formatDay(date)}
+      />
+
+      {showModal.show && <HabitsModal setShowModal = {setShowModal} showModal = {showModal}/>}
+    </>
+    
   )
 }

@@ -16,7 +16,7 @@ import ResetStyle from "./GlobalStyles/Reset ";
 
 function App() {
   const [userData, setUserData] = useState({ token: "", isLogged: false, image: "", habitsList: [], todayHabitsList: [], completedHabits: [], userHistoric: [] });
-  
+
   return (
     <UserContext.Provider value={{ userData, setUserData }}>
       <BrowserRouter>
