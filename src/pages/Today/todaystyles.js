@@ -12,7 +12,7 @@ export const TodayContainer = styled.div`
   overflow: scroll;
 `
 export const CurrentDay = styled.h1`
-  width: 172px;
+  width: 94vw;
   height: 29px;
   left: 17px;
   top: 98px;

@@ -11,6 +11,8 @@ export default function HabitsPage() {
   // const [habits, setHabits] = useState(undefined);
   const [creatingHabit, setCreatingHabit] = useState(false);
   const {userData, setUserData} = useContext(UserContext);
+  const [habitName, setHabitName] =useState("");
+  const [weekdays, setWeekdays] = useState([]);
   const navigate = useNavigate()
   const config = {
     headers: {
@@ -39,7 +41,12 @@ export default function HabitsPage() {
         <AddHabitButton onClick={() => setCreatingHabit(true)}  data-test="habit-create-btn">+</AddHabitButton>
       </MyHabits>
       {creatingHabit &&
-      <AddHabit setCreatingHabit = {setCreatingHabit}/>
+      <AddHabit 
+        setCreatingHabit = {setCreatingHabit} 
+        habitName = {habitName} 
+        setHabitName = {setHabitName}
+        weekdays = {weekdays}
+        setWeekdays = {setWeekdays}/>
       }
       {userData.habitsList.length >= 1 ? 
       <HabitsListContainer>

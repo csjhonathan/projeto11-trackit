@@ -5,12 +5,9 @@ import UserContext from "../../contextAPI/userContext";
 import BASE_URL from "../../constants/BASE_URL";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-export default function AddHabit ({setCreatingHabit}){
-  const [weekdays, setWeekdays] = useState([]);
-  const [habitName, setHabitName] =useState("");
+export default function AddHabit ({setCreatingHabit, habitName, setHabitName, weekdays, setWeekdays}){
   const {userData, setUserData} = useContext(UserContext);
-  const [sendingHabit, setSendingHabit] = useState(false)
-
+  const [sendingHabit, setSendingHabit] = useState(false);
   //header config
   const config = {
     headers: {
@@ -26,7 +23,6 @@ export default function AddHabit ({setCreatingHabit}){
       setWeekdays(weekdays.filter(day => day!==d))
     }
   }
-
   //adicionar um habito e mostrar a nova lista
   function addHabit (e){
     e.preventDefault();
@@ -42,6 +38,8 @@ export default function AddHabit ({setCreatingHabit}){
       .then(() => {
         setSendingHabit(false)
         setCreatingHabit(false)
+        setHabitName("")
+        setWeekdays([])
         axios.get(BASE_URL, config)
           .then(({data})=> {
             checkTodayHabits(data)
@@ -90,7 +88,7 @@ export default function AddHabit ({setCreatingHabit}){
             })}
           </DaysContainer>
           <SubmitContainer>
-            <CancelHabitButton type="button" disabled = {sendingHabit} onClick={() => setCreatingHabit(false)} data-test="habit-create-cancel-btn">Cancelar</CancelHabitButton>
+            <CancelHabitButton type="button" disabled = {sendingHabit} onClick={ () => setCreatingHabit(false)} data-test="habit-create-cancel-btn">Cancelar</CancelHabitButton>
             <SaveHabitButton type="submit" disabled = {sendingHabit} data-test="habit-create-save-btn">{sendingHabit ? <Loader/> : "Salvar"}</SaveHabitButton>
           </SubmitContainer>
       </AddHabitForm>

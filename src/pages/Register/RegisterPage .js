@@ -7,7 +7,7 @@ import BASE_URL_LOGIN from "../../constants/BASE_URL_LOGIN"
 import Loader from "../../components/Loader/Loader";
 export default function Register() {
   const [register, setRegister] = useState({ email: "", name: "", image: "", password: "" });
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false);
   const navigate = useNavigate();
 
   function handleFormData(e) {
